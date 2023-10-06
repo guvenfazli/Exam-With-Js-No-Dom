@@ -342,6 +342,43 @@
     </div>
   
   </section>
+  <script>
+
+    let results = JSON.parse(localStorage.getItem('results')) || {
+      True: 0,
+      False: 0
+    }
+
+    function userChoice(choice, option){
+      
+        if(choice === option){
+          alert(`Correct Answer!`)
+        } else if(choice != option){
+          alert(`Wrong Answer!`)
+        }
+
+        if(choice === option){
+          results.True += 1
+        } else if(choice != option){
+          results.False +=1
+        }
+
+        console.log(results)
+
+        localStorage.setItem('results', JSON.stringify(results))
+
+        if(results.True + results.False >= 16){
+          if(results.True > 9){
+            alert(`You passed!`)
+          } else if(results.True < 9){
+            alert(`You failed!`)
+          }
+        }
+        
+      
+    }
+  </script>
+
 
 
 </body>
